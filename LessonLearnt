@@ -1,0 +1,45 @@
+Before starting a project that is not framework like React, you need to run something to get package.json in your folder.
+You need to run:
+npm init -y
+
+We will be installing main dependencies to create our Markdown blogs which are:
+Express - which is for our server
+Mongoose - For our database
+ejs - for our views
+
+When you want to install multiple dependencies like above, you do as follow:
+
+npm i express mongoose ejs
+
+I installed nodemon as followed after above step:
+
+npm i --save-dev nodemon
+
+--save-dev (It is when you want development dependency - Otherwise, you can use -g which is golbally added to your system path)
+
+Nodemon is the dependency allow the page to refresh on-demand whenever you make changes into the script
+
+You will then need to add this line in replacement of test line below the script in Package.json where the name of folder is from. What you need to add is this:
+"devStart": "nodemon server.js"
+Then create a file called server.js
+After that, run this 'npm start devStart' in terminal
+
+We will be running our backend on our server.js
+So we create res, resp on our localhost:5000 that we run. So we can test if res, rep work by writing app.get for res as function and then running our res.send to test if it sent comment.
+
+After that which is the best part, we do app.set to set our view-engine on our website to recognise ejs and convert them into html.
+
+This is where you will want to create index.(ejs), notice that it is ejs file, not html or js file. However, you need to make sure that you created Views folder and then create a file in that folder called index.ejs. Create a normal html document and whatever you write in body will show up in the server.
+
+We then now create Routes files where our routes goes to. So we create Routes folder, and then create article.js file. We add const variable called Router where we assign it as express.Router()
+
+When having issue with connecting to mongodb as you are getting errors in connecting. Change your connect to this below:
+
+mongoose.connect('mongodb://127.0.0.1/test')
+
+This will ensure your DB is connected.
+
+
+When you are getting CastError: Cast to Object failed for Value. That could meant that your method or argument for findById need to be replaced by findOneAndUpdate.
+
+If you are noticing that your new article is not saving, that might be because your variable marked in article.js need to be put inside curly braces to work properly.
